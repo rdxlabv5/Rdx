@@ -1,133 +1,110 @@
-module.exports.config = {
-	name:"uptime",
-	version: "1.0.0",
-	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-	description: "Random anime image api - uptime",
-	commandCategory: "Banner",
-	cooldowns: 3,
-  dependencies: {
-		"pidusage": ""
-	}
-};
-function byte2mb(bytes) {
-	const units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-	let l = 0, n = parseInt(bytes, 10) || 0;
-	while (n >= 1024 && ++l) n = n / 1024;
-	return `${n.toFixed(n < 10 && l > 0 ? 1 : 0)} ${units[l]}`;
-}
-module.exports.run = async ({ api, event, args }) => {
-const time = process.uptime() ,
-		hours = Math.floor(time / (100 * 110)),
-		minutes = Math.floor((time % (100* 99)) / 88),
-		seconds = Math.floor(time % 110);
-  var z_1 = (hours < 10) ? '0' + hours : hours;
-    var x_1 = (minutes < 10) ? '0' + minutes : minutes;
-    var y_1 = (seconds < 10) ? '0' + seconds : seconds;
-  const { commands } = global.client;
-  const moment = require("moment-timezone");
-  const timeNow = moment.tz("Asia/Karachi").format("DD/MM/YYYY || HH:mm:s");
-    const axios = require('axios')
-	const pidusage = await global.nodemodule["pidusage"](process.pid);
-	const timeStart = Date.now();
-  const fs = require('fs-extra');
-   if (!fs.existsSync(__dirname +
-        `/tad/UTM-Avo.ttf`)) {
-        let getfont = (await axios.get(`https://github.com/hanakuUwU/font/raw/main/UTM%20Avo.ttf`, { responseType: "arraybuffer" })).data;
-        fs.writeFileSync(__dirname + `/tad/UTM-Avo.ttf`, Buffer.from(getfont, "utf-8"));
-      }
-         if (!fs.existsSync(__dirname +
-      `/tad/phenomicon.ttf`)) {
-      let getfont2 = (await axios.get(`https://github.com/hanakuUwU/font/raw/main/phenomicon.ttf`, { responseType: "arraybuffer" })).data;
-      fs.writeFileSync(__dirname + `/tad/phenomicon.ttf`, Buffer.from(getfont2, "utf-8"));
-    };
-  if (!fs.existsSync(__dirname +
-      `/tad/CaviarDreams.ttf`)) {
-      let getfont3 = (await axios.get(`https://github.com/hanakuUwU/font/raw/main/CaviarDreams.ttf`, { responseType: "arraybuffer" })).data;
-      fs.writeFileSync(__dirname + `/tad/CaviarDreams.ttf`, Buffer.from(getfont3, "utf-8"));
-    };
-   const { loadImage, createCanvas, registerFont } = require("canvas");
-  
-  let k = args[0];
-   if(args[0] == "list"){
-    const alime = (await axios.get('https://raw.githubusercontent.com/mraikero-01/saikidesu_data/main/anilist2.json')).data
-    var count = alime.listAnime.length;
-      var data = alime.listAnime
-      var page = 1;
-      page = parseInt(args[1]) || 1;
-      page < -1 ? page = 1 : "";
-      var limit = 20;
-      var numPage = Math.ceil(count/limit);
-      var msg = ``;
-      for(var i = limit*(page - 1); i < limit*(page-1) + limit; i++){
-         if(i >= count) break;
-        msg += `[ ${i+1} ] - ${data[i].ID} | ${data[i].name}\n`;
-      }
-      msg += `Trang ( ${page}/${numPage} )\nDùng ${global.config.PREFIX}${this.config.name} list < số trang >`;
-      return api.sendMessage(msg, event.threadID,event.messageID);
-   }
-  if(!k){
-  var id = Math.floor(Math.random() * 883) +1
-  } else {
-    var id = k
-  }
-  const loz = ["https://i.imgur.com/9jbBPIM.jpg","https://i.imgur.com/cPvDTd9.jpg","https://i.imgur.com/ZT8CgR1.jpg","https://i.imgur.com/WhOaTx7.jpg","https://i.imgur.com/BIcgJOA.jpg","https://i.imgur.com/EcJt1yq.jpg","https://i.imgur.com/0dtnQ2m.jpg"]
-    const lengthchar = (await axios.get('https://raw.githubusercontent.com/mraikero-01/saikidesu_data/main/imgs_data2.json')).data
-    console.log(lengthchar.length)
-  const Canvas = require('canvas');
-    let pathImg = __dirname + `/tad/avatar_1111231.png`;
-    let pathAva = __dirname + `/tad/avatar_3dsc11.png`;
-    let background = (await axios.get(encodeURI((loz[Math.floor(Math.random() * loz.length)])), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathImg, Buffer.from(background, "utf-8"));
-    let ava = (await axios.get(encodeURI(`${lengthchar[id - 1].imgAnime}`), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathAva, Buffer.from(ava, "utf-8"));
-    const request = require('request');
-    const path = require('path');
+const os = require("os");
+const fs = require("fs-extra");
 
-  //const a = Math.floor(Math.random() * 820) + 1
-  
-  
-let l1 = await loadImage(pathAva);
-    let a = await loadImage(pathImg);
-    let canvas = createCanvas(a.width, a.height);
-    var ctx = canvas.getContext("2d");
-    ctx.fillStyle = lengthchar[id - 1].colorBg;
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-    ctx.drawImage(a, 0, 0, canvas.width, canvas.height);
-  ctx.drawImage(l1, 800, -160, 1100, 1100);
-     registerFont(__dirname + `/tad/phenomicon.ttf`, {
-      family: "phenomicon"
-    });
-    ctx.textAlign = "start";
-    ctx.strokeStyle = lengthchar[id - 1].colorBg;
-    ctx.filter = "brightness(90%) contrast(110%)";
-    ctx.font = "130px phenomicon";
-    ctx.fillStyle = lengthchar[id].colorBg;
-    ctx.fillText("UPTIME ROBOT", 95, 340);
-    ctx.beginPath();
-  ////////////////////////////////////////
-   registerFont(__dirname + `/tad/UTM-Avo.ttf`, {
-      family: "UTM"
-    });
-    ctx.textAlign = "start";
-    ctx.font = "70px UTM";
-    ctx.fillStyle = "#fdfdfd";
-    ctx.fillText(`${z_1} : ${x_1} : ${y_1} `, 180, 440);
-    ctx.restore();
-    ctx.save();
-registerFont(__dirname + `/tad/CaviarDreams.ttf`, {
-      family: "time"
-    });
-    ctx.textAlign = "start";
-    ctx.font = "45px time";
-    ctx.fillText("@" + "priyanshu.rajput.official", 250, 515)
-    ctx.fillText("@" + "pri_yanshu12", 250, 575)
-   //ctx.fillText("@" + "DVFB.VietLe.pro", 405, 750)
-    ctx.restore();
-    ctx.save();
-    ctx.beginPath();
-    const imageBuffer = canvas.toBuffer();
-   fs.writeFileSync(pathImg, imageBuffer);
-  return api.sendMessage({
-    body: `┃======{ 𝗨𝗣𝗧𝗜𝗠𝗘 𝗥𝗢𝗕𝗢𝗧 }======┃\n\n→ Bot worked  ${hours} hours ${minutes} minutes ${seconds} seconds \n•━━━━━━━━━━━━━━━━━━━━━━━━•\n➠ 𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭\n➠ Bo𝐭 Name: ${global.config.BOTNAME}\n➠ Bot Prefix: ${global.config.PREFIX}\n➠ Commands count: ${commands.size}\n➠ Total Users: ${global.data.allUserID.length}\n➠ Total thread: ${global.data.allThreadID.length}\n➠ CPU in use:: ${pidusage.cpu.toFixed(1)}%\n➠ RAM: ${byte2mb(pidusage.memory)}\n➠
+const startTime = new Date(); // Moved outside onStart
+
+module.exports = {
+  config: {
+    name: "uptime",
+    version: "1.0.0",
+    hasPermssion: 2,
+    credits: "𝐒𝐀𝐑𝐃𝐀𝐑 𝐑𝐃𝐗",
+    description: "test",
+    commandCategory: "box",
+    usages: "test",
+    dependencies: {},
+    cooldowns: 5
+  },
+
+  run: async function ({ api, event, args }) {
+    try {
+      const uptimeInSeconds = (new Date() - startTime) / 1000;
+
+      const seconds = uptimeInSeconds;
+      const days = Math.floor(seconds / (3600 * 24));
+      const hours = Math.floor((seconds % (3600 * 24)) / 3600);
+      const minutes = Math.floor((seconds % 3600) / 60);
+      const secondsLeft = Math.floor(seconds % 60);
+      const uptimeFormatted = `${days}d ${hours}h ${minutes}m ${secondsLeft}s`;
+
+      const loadAverage = os.loadavg();
+      const cpuUsage =
+        os
+          .cpus()
+          .map((cpu) => cpu.times.user)
+          .reduce((acc, curr) => acc + curr) / os.cpus().length;
+
+      const totalMemoryGB = os.totalmem() / 1024 ** 3;
+      const freeMemoryGB = os.freemem() / 1024 ** 3;
+      const usedMemoryGB = totalMemoryGB - freeMemoryGB;
+
+     // const allUsers = await usersData.getAll();
+     // const allThreads = await threadsData.getAll();
+      const currentDate = new Date();
+      const options = { year: "numeric", month: "numeric", day: "numeric" };
+      const date = currentDate.toLocaleDateString("en-US", options);
+      const time = currentDate.toLocaleTimeString("en-US", {
+        timeZone: "Asia/Kolkata",
+        hour12: true,
+      });
+
+     const timeStart = Date.now();
+await api.sendMessage({
+  body: "⚡ | Checking system status, please wait...",
+}, event.threadID);
+
+const ping = Date.now() - timeStart;
+
+let pingStatus = "❌ | Bad System";
+if (ping < 1000) {
+  pingStatus = "✅ | Smooth System";
+}
+
+const systemInfo = `
+┏━━━━━༺༻━━━━━┓
+         𝐒𝐘𝐒𝐓𝐄𝐌 𝐈𝐍𝐅𝐎
+┗━━━━━༺༻━━━━━┛
+
+╭──────[ ✦ ]──────╮
+➤ ⏳ 𝗨𝗣𝗧𝗜𝗠𝗘: ${uptimeFormatted}
+➤ 🖥️ 𝗢𝗦: ${os.type()} ${os.arch()}
+➤ ⚙️ 𝗡𝗢𝗗𝗘 𝗩𝗘𝗥: ${process.version}
+➤ 🧠 𝗖𝗣𝗨: ${os.cpus()[0].model}
+➤ 💾 𝗦𝗧𝗢𝗥𝗔𝗚𝗘: ${usedMemoryGB.toFixed(2)} GB / ${totalMemoryGB.toFixed(2)} GB
+➤ 📈 𝗖𝗣𝗨 𝗨𝗦𝗔𝗚𝗘: ${cpuUsage.toFixed(1)}%
+➤ 🧹 𝗥𝗔𝗠 𝗨𝗦𝗔𝗚𝗘: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB
+╰──────[ ✦ ]──────╯
+
+┏━━━━━༺༻━━━━━┓
+         𝐒𝐘𝐒𝐓𝐄𝐌 𝐒𝐓𝐀𝐓𝐔𝐒
+┗━━━━━༺༻━━━━━┛
+
+➤ 📅 𝗗𝗔𝗧𝗘: ${date}
+➤ ⏰ 𝗧𝗜𝗠𝗘: ${time}
+➤ ⚡ 𝗣𝗜𝗡𝗚: ${ping} ms
+➤ ⭐ 𝗦𝗧𝗔𝗧𝗨𝗦: ${pingStatus}
+`;
+
+api.sendMessage(
+  {
+    body: systemInfo,
+  },
+  event.threadID,
+  (err, messageInfo) => {
+    if (err) {
+      console.error("Error sending message with attachment:", err);
+    } else {
+      console.log("Message with attachment sent successfully:", messageInfo);
+    }
+  }
+);
+} catch (error) {
+  console.error("Error retrieving system information:", error);
+  api.sendMessage(
+    "Unable to retrieve system information.",
+    event.threadID,
+    event.messageID,
+  );
+}
+},
+};
