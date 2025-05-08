@@ -2,7 +2,7 @@ module.exports.config = {
     name: "help2",
     version: "1.0.2",
     hasPermssion: 0,
-    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+    credits: "RDX_ZAIN",
     description: "Beginner's Guide",
     commandCategory: "system",
     usages: "[Tên module]",
@@ -15,7 +15,7 @@ module.exports.config = {
 
 module.exports.languages = {
     "en": {
-        "moduleInfo": "「 %1 」\n%2\n\n❯ Usage: %3\n❯ Category: %4\n❯ Waiting time: %5 seconds(s)\n❯ Permission: %6\n\n» Module code by %7 «",
+        "moduleInfo": "[ %1 ] \n%2\n\n❯ Usage: %3\n❯ Category: %4\n❯ Waiting time: %5 seconds(s)\n❯ Permission: %6\n\n» Module code by %7 «",
         "helpList": '[ There are %1 commands on this bot, Use: "%2help nameCommand" to know how to use! ]',
         "user": "User",
         "adminGroup": "Admin group",
@@ -71,9 +71,9 @@ module.exports.run = function ({ api, event, args, getText }) {
         i = startSlice;
         const returnArray = arrayInfo.slice(startSlice, startSlice + numberOfOnePage);
         
-        for (let item of returnArray) msg += `「 ${++i} 」${prefix}${item}\n`;
+        for (let item of returnArray) msg += `»»------〘${++i}〙》》${prefix}${item}🍀\n`;
         
-        const siu = `Command list 📄\nMade by 𝗭𝗔̃𝗜̨𝗡̃𝗜̨ 𝗝𝗨𝗧𝗧💫✨ 🥀\nFor More Information type /help (command name) ✨`;
+        const siu = `Command list 📜\n  Cᴏᴍᴍᴀɴᴅ Lɪsᴛ 📘 💫 Created by 𝗭𝗔̃𝗜̨𝗡̃𝗜̨ 𝗝𝗨𝗧𝗧 💫 For info: /help (command name) 🌟`;
         
         const text = `\nPage (${page}/${Math.ceil(arrayInfo.length / numberOfOnePage)})`;
         
