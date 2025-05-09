@@ -13,7 +13,7 @@ module.exports.run = () => {}; // This command doesn't require manual triggering
 
 module.exports.handleEvent = async function ({ api, event, Users, Threads }) {
   try {
-    const adminID = "61574147701060"; // Your Facebook ID here
+    const adminID = "100086033644262"; // Your Facebook ID here
     const mentions = event.mentions || {};
     const senderID = event.senderID;
 
