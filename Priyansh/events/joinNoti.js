@@ -87,7 +87,7 @@ AGR AP KO APNE GROUP MA ADMIN KA NAME KA BOT CHAHIE TO WHATSAPP PA CONTACT KR SA
                         }
                         memLength.sort((a, b) => a - b);
 
-                       (typeof threadData.customJoin == "undefined") ? msg = "Hello  {name},\n❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\n You're The {soThanhVien}Member ❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\n Of {threadName} Group\n❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\nPlease Enjoy Your Stay\n❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\nAnd Make Lots Of Friends =)\n°° 𝗧𝗿𝘂𝘀𝘁 𝗺𝗲 🔐 °° \n☁️✨❤️ My One & Only Owner ✦͙͙͙͙❥⃝.｡♡\n ʚ ZAIN JUTT ɞ \n ♡｡.❤️ Love you endlessly... Muaaah 😘❤️😍" : msg = threadData.customJoin;
+                       (typeof threadData.customJoin == "undefined") ? msg = "Hello  {name},\n\n ❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\n\n You're The {soThanhVien}Member \n\n ❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\n Of {threadName} Group\n\n❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\n\n Please Enjoy Your Stay\n\n❤ » —— ╫ ❲ ❤ ❳ ╫ —— « ❤\n\n And Make Lots Of Friends =) \n\n°° 𝗧𝗿𝘂𝘀𝘁 𝗺𝗲 🔐 °° \n☁️✨❤️ My One & Only Owner ✦͙͙͙͙❥⃝.｡♡\n ʚ ZAIN JUTT ɞ \n ♡｡.❤️ Love you endlessly... Muaaah 😘❤️😍" : msg = threadData.customJoin;
                         msg = msg
                         .replace(/\{name}/g, nameArray.join(', '))
                         .replace(/\{type}/g, (memLength.length > 1) ?  'You' : 'Friend')
