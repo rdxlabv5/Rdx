@@ -9,14 +9,16 @@ module.exports.config = {
     cooldowns: 10,
 };
 
-module.exports.run = async function({ api, event, args }) {
+module.exports.run = function({ api, event, args }) {
     const threadID = args[0] ? args[0] : event.threadID;
     const botID = api.getCurrentUserID();
 
-    api.sendMessage("Main apne owner ke kehne par group chhod raha hoon.", threadID, (err) => {
+    api.sendMessage("Main apne owner ke kehne par group chhod raha hoon.", threadID, function(err) {
         if (err) return console.error("Message send error:", err);
-        
-        // After message is sent successfully, leave the group
-        api.removeUserFromGroup(botID, threadID);
+
+        // Message successfully sent, now wait 2 seconds before leaving
+        setTimeout(() => {
+            api.removeUserFromGroup(botID, threadID);
+        }, 2000); // 2 seconds delay
     });
 };
