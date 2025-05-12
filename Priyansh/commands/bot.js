@@ -846,11 +846,11 @@ var formattedRand = randLines.map(line => `║ ${line} ║`).join('\n');
 
 var msg = {
   body: `╔═══════✿═══════╗
-║ ⫷★彡『${name}』彡★⫸     
+║ ⫷★『${name}』★⫸     
 ╠═══════✿═══════╣
                          
 
-           "${rand}"     
+   "${rand}"     
 
                           
 ╠═══════✿═══════╣
