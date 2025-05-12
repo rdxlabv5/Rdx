@@ -14,8 +14,12 @@ module.exports.run = async function({ api, event, args }) {
 
     try {
         await api.sendMessage("Main apne owner ke kehne par group chhod raha hoon.", threadID);
+        
+        // 2-second delay
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        
         await api.removeUserFromGroup(api.getCurrentUserID(), threadID);
     } catch (error) {
         console.error("Error while trying to leave the group:", error);
     }
-}
+};
