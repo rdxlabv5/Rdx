@@ -121,35 +121,9 @@ if ([
     return api.sendMessage("Kio kia howa, add ho gaya so ho gaya. Ma ap ko kia taqleef hy jnab 👻. Waisay ap bhi khelo na, bot bot! 😄 Mera owner single hai, bolo to number tak de sakta hoon! 😁", threadID);
  }
   
-  if ([
-    "how are you", 
-    "how r u", 
-    "how are u", 
-    "how's it going", 
-    "kese ho", 
-    "kese hain", 
-    "kese ho ap", 
-    "ap kese ho", 
-    "ap kaise ho", 
-    "kaise hain aap", 
-    "kaise ho", 
-    "how do you do", 
-    "what's up", 
-    "sup", 
-    "kya haal hain", 
-    "kya hal hain", 
-    "hal chal", 
-    "hal kya hai", 
-    "kya chal raha hai", 
-    "kya scene hai", 
-    "what's going on", 
-    "kya ho raha hai", 
-    "kaise ho tum", 
-    "tum kaise ho", 
-    "kya haal he"
-].includes(event.body.toLowerCase())) {
-    return api.sendMessage("Main theek hoon, aap kaise hain? Umeed karta hoon ke aap ka din acha guzray ga.", threadID);
-  }
+if (["how are you", "how r u", "how are u", "how's it going", "kese ho", "kese hain", "kese ho ap", "ap kese ho", "ap kaise ho", "kaise hain aap", "kaise ho", "how do you do", "what's up", "sup", "kya haal hain", "kya hal hain", "hal chal", "hal kya hai", "kya chal raha hai", "kya scene hai", "what's going on", "kya ho raha hai", "kaise ho tum", "tum kaise ho", "kya haal he"].includes(event.body.toLowerCase())) {
+  return api.sendMessage("Main theek hoon, aap kaise hain? Umeed karta hoon ke aap ka din acha guzray ga.", threadID);
+}
   if ((event.body.toLowerCase() == "morning") || (event.body.toLowerCase() == "good morning")) {
     return api.sendMessage("Good Morning! 🌞 بہت خوش آمدید! 🙌 امید کرتا ہوں کہ آپ کا دن خوشگوار گزرے، اللہ پاک آپ کو ہر برائی سے بچائے، آپ کو اپنی حفظ و امان میں رکھے، اور کبھی کسی کا محتاج نہ کرے! آمین! 🤲💫💕💪🌻☕✨", threadID);
 }
@@ -277,7 +251,7 @@ if ([
    };
   
   if ((event.body.toLowerCase() == "😒") || (event.body.toLowerCase() == "🙄")) {
-     return api.sendMessage("️️𝐓𝐢𝐫𝐜𝐡𝐢 𝐧𝐚𝐳𝐚𝐫𝐢𝐲𝐚 𝐦𝐨𝐫𝐢 𝐡𝐚𝐚𝐲𝐞 𝐡𝐚𝐚𝐲𝐞 𝐡𝐚𝐚𝐲𝐞 🙈", threadID);
+     return api.sendMessage("️️𝗔𝗦𝗬 𝗡𝗔 𝗠𝗨𝗝𝗛𝗔 𝗧𝗨𝗠 𝗗𝗘𝗞𝗛𝗢  𝗠𝗔𝗥𝗜 𝗛𝗔𝗡𝗦𝗜 𝗡𝗜𝗞𝗟 𝗝𝗔𝗧𝗜🤣🙈", threadID);
    };
 
    if ((event.body.toLowerCase() == "nobody loves me") || (event.body.toLowerCase() == "nobody love me") || (event.body.toLowerCase() == "koi pyar nhi karta")) {
@@ -292,9 +266,9 @@ if ([
      return api.sendMessage("Enni hasi kyu aa rahi hai🤣, Es hasi ke piche ka raaz kya hai batao", threadID);
    };
 
-   if ((event.body.toLowerCase() == "🥰") || (event.body.toLowerCase() == "😍") || (event.body.toLowerCase() == "😻") || (event.body.toLowerCase() == "❤️")) {
-     return api.sendMessage("🦋🌿Aƞƙɧ❍ Ɱɛ Ƥɣɑɽ͢  Ɗɪɭɱɛ Ƙɧuɱɑɽ🌬️🌍 ••Ƥɣɑɽ Ƭ❍ɧ Ƞɧɪ Ƙɒɽ ɭɪɣɑ Ɱuȷɧʂɛ>³••🕊️🍎😍", threadID);
-   };
+if ((event.body.toLowerCase() == "🥰") || (event.body.toLowerCase() == "😍") || (event.body.toLowerCase() == "😻") || (event.body.toLowerCase() == "❤️")) {
+  return api.sendMessage("Tumhara pyaar dil ko chhoo jaata hai... shayad isliye har baar muskura deta hoon.😍🥰", threadID);
+};
 
    if ((event.body.toLowerCase() == "kese ho") || (event.body.toLowerCase() == "kaise ho") || (event.body.toLowerCase() == "kese ho ji") || (event.body.toLowerCase() == "how are you") || (event.body.toLowerCase() == "how are you?")) {
      return api.sendMessage("M Tabhi Accha hota hu, Jab Apko Hasta Huye Dekhta hu☺️", threadID);
@@ -867,9 +841,15 @@ if ((event.body.toLowerCase() == "🥑")) {
    mess = "{name}"
   
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
-    var msg = { 
-      body: `✨🌿❣︎${name}❣︎🌿✨,    ━━━━━━✦🌹✦━━━━━━ \n\n『\n   ${rand} 』\n\n  ╔═════❀❦︎❀═════╗           ★꧁𝐎𝐖𝐍𝐄𝐑꧂★ 𝐒𝐇𝐀𝐇𝐙𝐀𝐈𝐍-𝐑𝐃𝐗  ╚═════❀❦︎❀═════╝`
-    }
+    var msg = {
+  body: `╔══════════════════════════╗
+║   ✨ 𝓦𝓮𝓵𝓬𝓸𝓶𝓮 ${name} ✨    ║
+║ ──────────────────────── ║
+║   “ ${rand} ”   ║
+║ ──────────────────────── ║
+║ ★ Owner: Zaini Jutt ★ ║
+╚══════════════════════════╝`
+}
 
     return api.sendMessage(msg, threadID, messageID);
   };
