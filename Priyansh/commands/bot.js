@@ -842,7 +842,7 @@ if ((event.body.toLowerCase() == "🥑")) {
   
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
 var randLines = `${rand}`.split('\n');
-var formattedRand = randLines.map(line => `║ ${line.padEnd(20)} ║`).join('\n');
+var formattedRand = randLines.map(line => `║ ${line} ║`).join('\n');
 
 var msg = {
   body: `╔═══════✿═══════╗
@@ -850,7 +850,7 @@ var msg = {
 ╠═══════✿═══════╣
 ${formattedRand}
 ╠═══════✿═══════╣
-║ ⫷ 𝓞𝓦𝓝𝓔𝓡 ⫸           
+║ 𝓞𝓦𝓝𝓔𝓡               
 ╠═══════✿═══════╣
 ║ ⊰❀ 𝕊𝕒𝕣𝕕𝕒𝕣 𝕽𝕯𝕏 ❀⊱    
 ╚═══════✿═══════╝`
