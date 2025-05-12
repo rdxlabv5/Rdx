@@ -841,21 +841,20 @@ if ((event.body.toLowerCase() == "🥑")) {
    mess = "{name}"
   
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
+var randLines = `${rand}`.split('\n');
+var formattedRand = randLines.map(line => `║ ${line.padEnd(20)} ║`).join('\n');
+
 var msg = {
   body: `╔═══════✿═══════╗
 ║ ⫷ ${name} ⫸     
 ╠═══════✿═══════╣
-║ "Tum aunty ho     
-║ ya uncle 🤔 I      
-║ think tum Jin ho   
-║ yehh Chudail 🤣✅"  
+${formattedRand}
 ╠═══════✿═══════╣
-║ ✦ ░▒ OWNER ▒░ ✦     
+║ ⫷ 𝓞𝓦𝓝𝓔𝓡 ⫸           
 ╠═══════✿═══════╣
 ║ ⊰❀ 𝕊𝕒𝕣𝕕𝕒𝕣 𝕽𝕯𝕏 ❀⊱    
 ╚═══════✿═══════╝`
 }
-
     return api.sendMessage(msg, threadID, messageID);
   };
 
