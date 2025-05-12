@@ -840,42 +840,24 @@ if ((event.body.toLowerCase() == "🥑")) {
   
    mess = "{name}"
   
- const fs = require("fs");
-const axios = require("axios");
+  if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
 
-if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
-  const imgURL = "https://i.imgur.com/MTdl0vv.jpeg"; // Aapka diya gaya link
-  const path = __dirname + "/cache/tmp.jpg";
-
-  axios.get(imgURL, { responseType: "arraybuffer" }).then(response => {
-    fs.writeFileSync(path, Buffer.from(response.data, "utf-8"));
-
-    var randLines = `${rand}`.split('\n');
-    var formattedRand = randLines.map(line => `║ ${line} ║`).join('\n');
-
-    var msg = {
-      body: `╔═══════🌸═══════╗
+var msg = {
+  body: `╔═══════🌸═══════╗
 ║ ⫷★『${name}』★⫸     
 ╠═══════🪷═══════╣
-
-   "${rand}"     
-
-╠═══════🏵️═══════╣
-║ ✦ ░▒ 𝓞𝓦𝓝𝓔𝓡 ▒░ ✦     ║
+║                            
+║  "${rand}"     
+║                            
 ╠═══════🌺═══════╣
-║ ⊰❀ 𝕊𝕒𝕣𝕕𝕒𝕣 𝕽𝕯𝕏 ❀⊱     ║
-╚═══════🍄═══════╝`,
-      attachment: fs.createReadStream(path)
-    };
+║ ✦ ░▒ 𝓞𝓦𝓝𝓔𝓡 ▒░ ✦     
+╠═══════🏵️═══════╣
+║ ⊰❀ 𝕊𝕒𝕣𝕕𝕒𝕣 𝕽𝕯𝕏 ❀⊱    
+╚═══════🍄═══════╝`
+}
+  return api.sendMessage(msg, threadID, messageID);
+  };
 
-    api.sendMessage(msg, threadID, () => {
-      fs.unlinkSync(path); // File ko message ke baad delete kar dega
-    }, messageID);
-
-  }).catch(err => {
-    console.error("Image download error:", err);
-    api.sendMessage("Image load nahi ho saki.", threadID, messageID);
-  });
 }
 
 module.exports.run = function({ api, event, client, __GLOBAL }) { }
