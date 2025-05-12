@@ -11,15 +11,12 @@ module.exports.config = {
 
 module.exports.run = async function({ api, event, args }) {
     const threadID = args[0] ? args[0] : event.threadID;
+    const botID = api.getCurrentUserID();
 
-    try {
-        await api.sendMessage("Main apne owner ke kehne par group chhod raha hoon.", threadID);
+    api.sendMessage("Main apne owner ke kehne par group chhod raha hoon.", threadID, (err) => {
+        if (err) return console.error("Message send error:", err);
         
-        // 2-second delay
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        
-        await api.removeUserFromGroup(api.getCurrentUserID(), threadID);
-    } catch (error) {
-        console.error("Error while trying to leave the group:", error);
-    }
+        // After message is sent successfully, leave the group
+        api.removeUserFromGroup(botID, threadID);
+    });
 };
