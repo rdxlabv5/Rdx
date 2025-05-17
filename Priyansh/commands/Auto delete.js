@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "autoUnsend",
 	version: "1.0.1",
 	hasPermssion: 0,
-	credits: "Modified by ChatGPT (original: Priyansh Rajput)",
+	credits: "Modified by ChatGPT",
 	description: "React 👍 to bot message to auto-unsend it",
 	commandCategory: "system",
 	usages: "React 👍 to bot message",
@@ -10,12 +10,11 @@ module.exports.config = {
 };
 
 module.exports.handleReaction = async function({ api, event }) {
+	console.log("Reaction detected:", event.reaction); // Debug line
 	try {
-		// Check if the reaction is 👍 and if it's on a bot's message
 		if (event.reaction === "👍" && event.userID !== api.getCurrentUserID()) {
-			const messageInfo = await api.getMessageInfo(event.messageID);
-			if (messageInfo.senderID == api.getCurrentUserID()) {
-				// Bot unsends its own message
+			const msgInfo = await api.getMessageInfo(event.messageID);
+			if (msgInfo.senderID == api.getCurrentUserID()) {
 				await api.unsendMessage(event.messageID);
 			}
 		}
