@@ -1,11 +1,12 @@
+/** don't change credits please **/
 module.exports.config = {
-  name: "HV", // Command name
+  name: "hv", // Lowercase so command works correctly
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "RDX",
-  description: "Send a random hot video", 
+  credits: "LOCKED ITZ AADI BROKEN",
+  description: "Send hot video",
   commandCategory: "Image",
-  usages: "HV", 
+  usages: "hv",
   cooldowns: 5,
   dependencies: {
     "request": "",
@@ -14,11 +15,18 @@ module.exports.config = {
   }
 };
 
-module.exports.run = async ({ api, event, args, Users, Threads, Currencies }) => {
+module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL, Currencies }) => {
   const axios = global.nodemodule["axios"];
   const request = global.nodemodule["request"];
   const fs = global.nodemodule["fs-extra"];
 
+  // Custom message before sending video
+  api.sendMessage("Yarr TU buht thrki hy baaz nhi aye ga sudhr ja Kuch nhi RAKHA en kamo me LEH KR RHA hu video send", event.threadID);
+
+  // React with 🥵 emoji
+  api.setMessageReaction("🥵", event.messageID, (err) => {}, true);
+
+  // Video links
   var link = [
     "https://drive.google.com/uc?id=1a7XsNXizFTTlSD_gRQwK4bDA3HPam56W",
     "https://drive.google.com/uc?id=1aF6H24ILE6wIFGW3M3BGXg8l63ktP8B3",
@@ -45,24 +53,16 @@ module.exports.run = async ({ api, event, args, Users, Threads, Currencies }) =>
     "https://drive.google.com/uc?id=1t2oFQmOtw-6V_ahWzYo08v1g2oGnkhPL"
   ];
 
-  // Set reaction to 🥵
-  api.setMessageReaction("🥵", event.messageID, (err) => {}, true);
+  // Send video from random link
+  const videoPath = __dirname + "/cache/hv.mp4";
+  const chosenLink = link[Math.floor(Math.random() * link.length)];
 
-  // Send initial message
-  api.sendMessage(
-    "𝙔𝙖𝙧𝙧 𝙩𝙪 𝙗𝙝𝙖𝙪𝙩 𝙩𝙝𝙧𝙠𝙞 𝙝𝙖𝙮, 𝙗𝙖𝙖𝙯 𝙣𝙖𝙝𝙞𝙣 𝙖𝙮𝙚 𝙜𝙖!\n𝙎𝙪𝙙𝙝𝙖𝙧 𝙟𝙖 𝙆𝙪𝙘𝙝 𝙣𝙖𝙝𝙞𝙣 𝙧𝙖𝙠𝙝𝙖 𝙚𝙣 𝙠𝙖𝙢𝙤𝙣 𝙢𝙚𝙞𝙣!\n\n𝙇𝙚𝙝 𝙠𝙖𝙧 𝙧𝙝𝙖 𝙝𝙪𝙣 𝙫𝙞𝙙𝙚𝙤 𝙨𝙚𝙣𝙙...",
-    event.threadID,
-    () => {
-      var callback = () => api.sendMessage(
-        { body: `𝗟𝗘 𝗣𝗞𝗥 𝗩𝗜𝗗𝗘𝗢 𝗠𝗔𝗥 𝗟𝗘𝗬 𝗠𝗨𝗧𝗛: ${link.length} 𝗩𝗜𝗗𝗘𝗢𝗦 𝗔𝗩𝗔𝗜𝗟𝗔𝗕𝗟𝗘!`, attachment: fs.createReadStream(__dirname + "/cache/1.mp4") },
-        event.threadID,
-        () => fs.unlinkSync(__dirname + "/cache/1.mp4"),
-        event.messageID
-      );
+  const callback = () => api.sendMessage({
+    body: "ya LY pkr video mar LY muth",
+    attachment: fs.createReadStream(videoPath)
+  }, event.threadID, () => fs.unlinkSync(videoPath), event.messageID);
 
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)]))
-        .pipe(fs.createWriteStream(__dirname + "/cache/1.mp4"))
-        .on("close", () => callback());
-    }
-  );
+  return request(encodeURI(chosenLink))
+    .pipe(fs.createWriteStream(videoPath))
+    .on("close", () => callback());
 };
